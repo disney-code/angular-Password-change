@@ -1,0 +1,50 @@
+
+<form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
+    <div>
+    <div *ngIf="form.pending">Checking for uniqueness</div>
+    <label 
+    for="userName"
+    class="form-label">
+        Username
+    </label>
+    <input 
+    class="form-control"
+    type="text"  
+    #var1
+    formControlName="username"
+    (change)="onChange()"
+    id="userName"
+    >
+    <div *ngIf="form.get('username')?.hasError('required') && !form.get('username')?.untouched " class="alert alert-danger">Username required</div>
+    <div *ngIf="form.get('username')?.hasError('minlength')" class="alert alert-danger">
+        Username needs to be at least {{form.get('username')?.getError('minlength').requiredLength}} characters long</div>
+    <div *ngIf="form.get('username')?.hasError('unique')" class="alert alert-danger"> {{form.get('username')?.getError('unique')}}</div>
+    <div *ngIf="form.get('username')?.hasError('haveSpace')" class="alert alert-danger">
+        {{form.get('username')?.getError('haveSpace')}}
+    </div>
+</div>
+<div>
+    <label 
+    for="passWord"
+    class="form-label">
+        Password
+    </label>
+    <input 
+    class="form-control"
+    type="text"  
+    #var1
+    formControlName="password"
+    id="passWord"
+    (change)="onPasswordChange()"
+    >
+    <div *ngIf="form.get('password')?.hasError('required') && !form.get('password')?.untouched" class="alert alert-danger">
+        Password required
+    </div>
+    <div *ngIf="form.get('password')?.hasError('minlength') && !form.get('password')?.untouched" class="alert alert-danger">
+       Password must be minimally {{form.get('password')?.getError('minlength').requiredLength}} characters long
+    </div>
+</div>
+
+<button type="submit" class="btn btn-primary">Sign Up</button>
+<div class="alert alert-danger" *ngIf="loginError">Incorrect password or username</div>
+</form>

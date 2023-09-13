@@ -1,0 +1,14 @@
+<h1>Courses Provided</h1>
+<input type="text" 
+#inputField
+(keydown.enter)="onEnterKeyPress(inputField.value, inputField)"
+class="form-control">
+<div>
+	<ul class="list-group">
+	<li  
+	class="list-group-item"
+	*ngFor="let item of myForm.get('myArray')?.value; let i = index"
+	(click)="deleteFunction(i)"
+	>{{ item }}</li>
+	</ul>
+</div>
