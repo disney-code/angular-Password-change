@@ -22,7 +22,7 @@ export class ChangePasswordComponent {
       newPassword: ['', Validators.required],
       confirmPass: ['', Validators.required]
     });
-    this.userForm.get('newPassword')?.setAsyncValidators(
+    this.userForm.get('confirmPass')?.setAsyncValidators(
       checkMatch(this.userForm)
     );
 }
@@ -41,8 +41,17 @@ onSubmit(){
   console.log(this.userForm.get('confirmPass'))
   
 }
-confirmPassChange(){
+newPassChange(){
+console.log(this.userForm)
+console.log(this.userForm.get('newPassword'))
+  
+}
 
+onConfirm(){
+  console.log("after leaving cofirm change")
+  console.log("userForm: ", this.userForm)
+  console.log("userForm.get('newPassword'): ",this.userForm.get('newPassword'))
+  console.log("userForm.get('confirmPass'): ",this.userForm.get('confirmPass'))
   
 }
 
