@@ -21,10 +21,10 @@ export class ChangePasswordComponent {
       oldPassword: ['', Validators.required],
       newPassword: ['', Validators.required],
       confirmPass: ['', Validators.required]
+    },{
+      asyncValidators: [checkMatch]
     });
-    this.userForm.get('confirmPass')?.setAsyncValidators(
-      checkMatch(this.userForm)
-    );
+    
 }
 
 
@@ -35,23 +35,15 @@ get oldPasswordControl(): FormControl {
 onSubmit(){
   console.log("submit button clicked")
   console.log(this.userForm)
-  console.log("above is userForm")
-  console.log("below is userForm.newPassword")
   console.log(this.userForm.get('newPassword'))
   console.log(this.userForm.get('confirmPass'))
   
 }
 newPassChange(){
-console.log(this.userForm)
-console.log(this.userForm.get('newPassword'))
-  
+
 }
 
 onConfirm(){
-  console.log("after leaving cofirm change")
-  console.log("userForm: ", this.userForm)
-  console.log("userForm.get('newPassword'): ",this.userForm.get('newPassword'))
-  console.log("userForm.get('confirmPass'): ",this.userForm.get('confirmPass'))
   
 }
 
