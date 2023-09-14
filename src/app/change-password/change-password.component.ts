@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormControl, FormBuilder,Validators,AsyncValidatorFn, ValidationErrors } from '@angular/forms';
-import { checkMatch } from './password-validator';
+import { checkMatch,validateOldPass } from './password-validator';
 
 @Component({
   selector: 'app-change-password',
@@ -18,16 +18,19 @@ export class ChangePasswordComponent {
 
   constructor(private fb: FormBuilder) {
     this.userForm = fb.group({
-      oldPassword: ['', Validators.required],
+      oldPassword: ['', [Validators.required,validateOldPass]],
       newPassword: ['', Validators.required],
       confirmPass: ['', Validators.required]
     },{
-      asyncValidators: [checkMatch]
+      validators: [checkMatch]
     });
     
 }
 
-
+inputToOldPassWord(){
+  // console.log("show old password object")
+  // console.log(this.userForm.get('oldPassword'))
+}
 get oldPasswordControl(): FormControl {
   return this.userForm.get('oldPassword') as FormControl;
 }
@@ -40,11 +43,18 @@ onSubmit(){
   
 }
 newPassChange(){
-
+console.log("new password jus recieve input");
+console.log(this.userForm)
+console.log(this.userForm.get('newPassword'))
+console.log("end of new password jus recieve input")
 }
 
 onConfirm(){
-  
+  console.log("confirm password jus recieve input");
+console.log(this.userForm)
+console.log(this.userForm.get('newPassword'))
+console.log(this.userForm.get('confirmPass'))
+console.log("end of confirm password jus recieve input")
 }
 
 }
