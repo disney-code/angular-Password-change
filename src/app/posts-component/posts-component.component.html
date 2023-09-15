@@ -8,14 +8,14 @@ class="form-control">
 class="list-group">
 	<li 
 	class="list-group-item"
-	*ngFor="let i of post"
+	*ngFor="let i of post ;let idx = index"
 	#thisPost>
 	
 		<button 
 		class="btn btn-sm btn-primary"
-		(click)="updateClick(thisPost,i.id)"
+		(click)="updateClick(i,i.id,idx)"
 		>
-		update
+		Delete
 		</button>
 	{{i.title}}</li>
 </ul>
