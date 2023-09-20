@@ -1,7 +1,7 @@
 
 <input type="text" 
 placeholder="Title of new post"
-(keyup.enter)="inputEntered(newPost)"
+(keyup.enter)="addNewTitle(newPost)"
 #newPost
 class="form-control">
 <ul
@@ -13,7 +13,7 @@ class="list-group">
 	
 		<button 
 		class="btn btn-sm btn-primary"
-		(click)="updateClick(i,i.id,idx)"
+		(click)="deleteButton(i)"
 		>
 		Delete
 		</button>

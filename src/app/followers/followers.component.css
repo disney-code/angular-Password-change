@@ -1,0 +1,30 @@
+.avatar-circle{
+	width:80px;
+	height:80px;
+	border-radius: 50%;
+	object-fit: cover;
+	border:2px solid #fff
+}
+
+.follower-info{
+	display:flex;
+	align-items:center
+}
+.left-content {
+	flex-grow: 0;
+	margin-right: 10px; /* Adjust the margin as needed to create space between the image and text */
+     
+}
+
+      .right-content {
+	flex-grow: 1; /* Allow this section to grow and take up remaining space */
+    
+}
+
+.login{
+	font-weight: bold;
+}
+
+.list-group-item {
+	border: none; /* Remove borders */
+      }
