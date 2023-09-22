@@ -13,7 +13,11 @@ class="list-group-item"
 	<img [src]="i.avatar_url" alt="{{i.login}} Avatar" class="avatar avatar-circle">
 	</div>
 	<div class="right-content">
-	<div class="login">{{i.login}}</div>
+		<div>
+	<a
+	[routerLink]="['/followers',i.id,i.login]"
+	class="login">{{i.login}}</a>
+</div>
 	<a [href]="i.html_url" target="_blank">{{i.html_url}}</a>
 	</div>	
 </div>

@@ -14,17 +14,25 @@ import { AppErrorHandler } from './common/app-error-handler';
 import { InjectionToken } from '@angular/core';
 import { FollowersComponent } from './followers/followers.component';
 import { FollowersService } from './services/followers.service';
+import { NavbarComponent } from './navbar/navbar.component';
+import {Router, RouterModule} from '@angular/router';
+import { HomeComponentComponent } from './home-component/home-component.component';
+import { GithubProfileComponent } from './github-profile/github-profile.component';
+import { NotFoundComponent } from './not-found/not-found.component'
 export const API_URL = new InjectionToken<string>('apiUrl');
 
 @NgModule({
   declarations: [
     AppComponent,
-    
     CourseFormComponent,
     SignupFormComponent,
     ChangePasswordComponent,
     PostsComponentComponent,
-    FollowersComponent
+    FollowersComponent,
+    NavbarComponent,
+    HomeComponentComponent,
+    GithubProfileComponent,
+    NotFoundComponent
     
     
   ],
@@ -33,7 +41,16 @@ export const API_URL = new InjectionToken<string>('apiUrl');
     AppRoutingModule,
     FormsModule,
     ReactiveFormsModule,
-    HttpClientModule
+    HttpClientModule,
+    RouterModule.forRoot([
+      {path:'',component:HomeComponentComponent},
+      
+      {path:'followers/:id/:username',component:GithubProfileComponent},
+      {path:'followers',component:FollowersComponent},
+      
+      {path:'posts',component:PostsComponentComponent},
+      {path:'**',component:NotFoundComponent},
+    ])
   ],
   providers: [PostService,FollowersService,
     {provide:ErrorHandler, useClass:AppErrorHandler},
